@@ -1,0 +1,6 @@
+{
+  "name": "Waufle Wault",
+  "description": "Premium native-feel personal finance app featuring multi-account tracking, Gemini AI receipt & statement scanning, SplitMoney, subscriptions, credit/EMI monitors, and financial insights.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

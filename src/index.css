@@ -1,0 +1,510 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input, textarea, select {
+    user-select: text;
+  }
+}
+
+/* Material You / Android Custom Utilities */
+.font-mono-numbers {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(160, 160, 160, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(160, 160, 160, 0.4);
+}
+
+/* =========================================================================
+   VOLUMETRIC GLASSMORPHISM & OCTANE 3D RENDER ENGINE (CLEAR GLASS THEME)
+   ========================================================================= */
+
+/* Floating Frosted Glass Container */
+.clear-glass-card {
+  background: radial-gradient(120% 120% at 20% 10%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 100%),
+              rgba(14, 18, 30, var(--glass-opacity, 0.62)) !important;
+  backdrop-filter: blur(var(--glass-blur, 24px)) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur, 24px)) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
+    0 20px 48px -10px rgba(0, 0, 0, 0.65),
+    0 0 28px 2px rgba(99, 102, 241, 0.16) !important;
+  border-radius: 28px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clear-glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.36) !important;
+  box-shadow: 
+    inset 0 1.5px 2.5px 0 rgba(255, 255, 255, 0.65),
+    0 24px 52px -12px rgba(0, 0, 0, 0.75),
+    0 0 35px 4px rgba(99, 102, 241, 0.25) !important;
+}
+
+/* Global Overarching Glass Overrides when Clear Glass Theme is active:
+   Ensures ALL cards, sections, headers, panels, and modals become real frosted glass */
+/* Global Overarching Glass Overrides when Clear Glass Theme is active in Dark Mode */
+.theme-dark.theme-clear-glass .bg-zinc-900,
+.theme-dark.theme-clear-glass .bg-zinc-950,
+.theme-dark.theme-clear-glass .bg-zinc-850,
+.theme-dark.theme-clear-glass .bg-zinc-800,
+.theme-dark.theme-clear-glass [class*="bg-zinc-9"],
+.theme-dark.theme-clear-glass [class*="bg-zinc-8"],
+.theme-dark.theme-clear-glass [class*="from-zinc-9"] {
+  background: radial-gradient(120% 120% at 20% 10%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 100%),
+              rgba(14, 18, 30, var(--glass-opacity, 0.62)) !important;
+  backdrop-filter: blur(var(--glass-blur, 24px)) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur, 24px)) saturate(200%) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.45),
+    0 20px 48px -12px rgba(0, 0, 0, 0.7),
+    0 0 28px 2px rgba(99, 102, 241, 0.16) !important;
+}
+
+.theme-dark.theme-clear-glass header {
+  background: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 100%),
+              rgba(10, 13, 24, 0.72) !important;
+  backdrop-filter: blur(32px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22) !important;
+}
+
+.theme-dark.theme-clear-glass input,
+.theme-dark.theme-clear-glass select,
+.theme-dark.theme-clear-glass textarea {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  color: #ffffff !important;
+}
+
+/* Floating Navigation Dock with Continuous Curvature Squircle & Volumetric Refraction:
+   Uses var(--glass-opacity) so when user sets low opacity, dock is translucent and underlying text is subtly visible! */
+.floating-glass-dock {
+  background: radial-gradient(120% 120% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 100%),
+              rgba(12, 16, 28, var(--glass-opacity, 0.75)) !important;
+  backdrop-filter: blur(var(--glass-blur, 32px)) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur, 32px)) saturate(220%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow:
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.6),
+    0 24px 50px -10px rgba(0, 0, 0, 0.8),
+    0 0 35px 2px rgba(99, 102, 241, 0.22) !important;
+  border-radius: 36px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glass Themed Floating Action Button (Closed State) */
+.glass-fab-btn {
+  background: radial-gradient(120% 120% at 30% 10%, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0.1) 100%),
+              rgba(18, 22, 38, var(--glass-opacity, 0.72)) !important;
+  backdrop-filter: blur(var(--glass-blur, 32px)) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur, 32px)) saturate(220%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow:
+    inset 0 2px 2.5px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.5),
+    0 20px 42px -8px rgba(0, 0, 0, 0.75),
+    0 0 32px 5px rgba(99, 102, 241, 0.38) !important;
+}
+
+.glass-fab-btn:hover {
+  background: radial-gradient(120% 120% at 30% 10%, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.16) 100%),
+              rgba(22, 28, 48, 0.82) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow:
+    inset 0 2.5px 3.5px 0 rgba(255, 255, 255, 0.85),
+    0 24px 50px -8px rgba(0, 0, 0, 0.85),
+    0 0 42px 7px rgba(99, 102, 241, 0.55) !important;
+}
+
+/* Glass Themed Floating Action Button (Open State) */
+.glass-fab-btn-open {
+  background: radial-gradient(120% 120% at 30% 10%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.06) 100%),
+              rgba(26, 32, 50, 0.8) !important;
+  backdrop-filter: blur(32px) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(220%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+  box-shadow:
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.55),
+    0 20px 40px -8px rgba(0, 0, 0, 0.8),
+    0 0 28px 4px rgba(99, 102, 241, 0.28) !important;
+}
+
+/* Continuous Curvature Squircle Helper */
+.squircle {
+  border-radius: 24px;
+}
+.squircle-lg {
+  border-radius: 32px;
+}
+
+/* Light Refraction Shimmer */
+@keyframes refractionShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.refraction-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: refractionShimmer 6s infinite ease-in-out;
+}
+
+/* Ambient Volumetric Color Glow */
+.volumetric-glow-emerald {
+  box-shadow: 0 0 50px 10px rgba(16, 185, 129, 0.18);
+}
+.volumetric-glow-violet {
+  box-shadow: 0 0 50px 10px rgba(139, 92, 246, 0.18);
+}
+.volumetric-glow-cyan {
+  box-shadow: 0 0 50px 10px rgba(6, 182, 212, 0.18);
+}
+
+/* Crazy UI Animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 4.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Smooth bottom-sheet bounce */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tab Navigation Entrance Animation: 60fps spring-eased spatial motion */
+@keyframes tabEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-tab-enter {
+  animation: tabEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal and dialog scale-in / fade-in animation: organic spring physics */
+@keyframes modalEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-enter {
+  animation: modalEnter 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+}
+
+/* Toast exit animation: smooth slide-out and height collapse */
+@keyframes toastExit {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    max-height: 90px;
+    margin-bottom: 8px;
+  }
+  60% {
+    opacity: 0.15;
+    transform: translateX(75px) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(110px) scale(0.75);
+    max-height: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.animate-toast-exit {
+  animation: toastExit 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =========================================================================
+   THEME PRESETS: EMERALD, CYBERPUNK, SUNSET, OBSIDIAN
+   ========================================================================= */
+
+/* 1. Emerald Vault (Material You Dynamic Emerald) */
+.theme-emerald .bg-zinc-900,
+.theme-emerald .bg-zinc-950,
+.theme-emerald .bg-zinc-850,
+.theme-emerald [class*="bg-zinc-9"] {
+  background: radial-gradient(120% 120% at 20% 10%, rgba(16, 185, 129, 0.14) 0%, rgba(5, 46, 22, 0.04) 100%),
+              rgba(8, 28, 20, var(--glass-opacity, 0.8)) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.7), 0 0 25px 2px rgba(16, 185, 129, 0.16) !important;
+}
+.theme-emerald .floating-glass-dock {
+  background: rgba(6, 25, 18, 0.92) !important;
+  border-color: rgba(16, 185, 129, 0.38) !important;
+  box-shadow: 0 20px 45px -8px rgba(0,0,0,0.8), 0 0 35px 2px rgba(16, 185, 129, 0.28) !important;
+}
+
+/* 2. Cyberpunk Neon */
+.theme-cyberpunk .bg-zinc-900,
+.theme-cyberpunk .bg-zinc-950,
+.theme-cyberpunk .bg-zinc-850,
+.theme-cyberpunk [class*="bg-zinc-9"] {
+  background: radial-gradient(120% 120% at 20% 10%, rgba(236, 72, 153, 0.18) 0%, rgba(6, 182, 212, 0.08) 100%),
+              rgba(18, 8, 28, var(--glass-opacity, 0.82)) !important;
+  border-color: rgba(236, 72, 153, 0.35) !important;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.8), 0 0 30px 3px rgba(236, 72, 153, 0.2) !important;
+}
+.theme-cyberpunk .floating-glass-dock {
+  background: rgba(18, 6, 28, 0.94) !important;
+  border-color: rgba(236, 72, 153, 0.45) !important;
+  box-shadow: 0 20px 45px -8px rgba(0,0,0,0.8), 0 0 35px 3px rgba(236, 72, 153, 0.35) !important;
+}
+
+/* 3. Sunset Horizon */
+.theme-sunset .bg-zinc-900,
+.theme-sunset .bg-zinc-950,
+.theme-sunset .bg-zinc-850,
+.theme-sunset [class*="bg-zinc-9"] {
+  background: radial-gradient(120% 120% at 20% 10%, rgba(249, 115, 22, 0.18) 0%, rgba(245, 158, 11, 0.06) 100%),
+              rgba(26, 14, 10, var(--glass-opacity, 0.82)) !important;
+  border-color: rgba(249, 115, 22, 0.35) !important;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.8), 0 0 30px 3px rgba(249, 115, 22, 0.2) !important;
+}
+.theme-sunset .floating-glass-dock {
+  background: rgba(28, 12, 8, 0.94) !important;
+  border-color: rgba(249, 115, 22, 0.45) !important;
+  box-shadow: 0 20px 45px -8px rgba(0,0,0,0.8), 0 0 35px 3px rgba(249, 115, 22, 0.35) !important;
+}
+
+/* 4. Obsidian Pure AMOLED */
+.theme-obsidian .bg-zinc-900,
+.theme-obsidian .bg-zinc-950,
+.theme-obsidian .bg-zinc-850,
+.theme-obsidian [class*="bg-zinc-9"] {
+  background: #000000 !important;
+  border-color: #27272a !important;
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.95) !important;
+}
+.theme-obsidian .floating-glass-dock {
+  background: #000000 !important;
+  border-color: #3f3f46 !important;
+  box-shadow: 0 20px 45px -8px rgba(0,0,0,0.98) !important;
+}
+
+/* =========================================================================
+   LIGHT MODE & SYSTEM THEME ENGINE
+   ========================================================================= */
+
+.theme-light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.theme-light .clear-glass-card {
+  background: radial-gradient(120% 120% at 20% 10%, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.8) 100%),
+              rgba(255, 255, 255, var(--glass-opacity, 0.88)) !important;
+  backdrop-filter: blur(var(--glass-blur, 24px)) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur, 24px)) saturate(160%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 1),
+    0 16px 36px -8px rgba(100, 116, 139, 0.12),
+    0 0 25px 2px rgba(99, 102, 241, 0.08) !important;
+  color: #0f172a !important;
+}
+
+.theme-light .bg-zinc-950 {
+  background-color: #f1f5f9 !important;
+}
+
+.theme-light .bg-zinc-900,
+.theme-light .bg-zinc-850,
+.theme-light .bg-zinc-800,
+.theme-light [class*="bg-zinc-9"],
+.theme-light [class*="bg-zinc-8"] {
+  background: rgba(255, 255, 255, var(--glass-opacity, 0.94)) !important;
+  color: #0f172a !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06), inset 0 1px 1.5px rgba(255, 255, 255, 1) !important;
+}
+
+.theme-light .text-white {
+  color: #0f172a !important;
+}
+
+.theme-light .text-zinc-100 {
+  color: #1e293b !important;
+}
+
+.theme-light .text-zinc-200,
+.theme-light .text-zinc-300 {
+  color: #334155 !important;
+}
+
+.theme-light .text-zinc-400 {
+  color: #64748b !important;
+}
+
+.theme-light .text-zinc-500 {
+  color: #94a3b8 !important;
+}
+
+.theme-light .border-zinc-800,
+.theme-light .border-zinc-700,
+.theme-light .border-zinc-600 {
+  border-color: #e2e8f0 !important;
+}
+
+.theme-light .border-white\/10,
+.theme-light .border-white\/5 {
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+.theme-light input,
+.theme-light select,
+.theme-light textarea {
+  background: rgba(255, 255, 255, 0.98) !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light header {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-bottom-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.theme-light .floating-glass-dock,
+.theme-light nav {
+  background: rgba(255, 255, 255, var(--glass-opacity, 0.94)) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.12), inset 0 1.5px 2px rgba(255, 255, 255, 1) !important;
+}
+
+.theme-light nav button span {
+  color: #64748b !important;
+}
+
+.theme-light nav button span.text-white {
+  color: #0f172a !important;
+}
+
+.theme-light .glass-fab-btn {
+  background: radial-gradient(120% 120% at 30% 10%, rgba(255, 255, 255, 0.98) 0%, rgba(240, 244, 250, 0.92) 100%) !important;
+  color: #0f172a !important;
+  border-color: rgba(203, 213, 225, 0.95) !important;
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15), inset 0 1.5px 2px rgba(255, 255, 255, 1) !important;
+}
+
+.theme-light .glass-fab-btn svg {
+  color: #0f172a !important;
+}
+
+/* Custom Primary Dynamic Color variable engine */
+.theme-custom .bg-zinc-900,
+.theme-custom .bg-zinc-950,
+.theme-custom .bg-zinc-850,
+.theme-custom [class*="bg-zinc-9"] {
+  border-color: rgba(var(--custom-accent-rgb, 99, 102, 241), 0.35) !important;
+}
+
+/* Android ripple effect */
+.android-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.android-ripple::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.android-ripple:active::after {
+  opacity: 0.12;
+}
